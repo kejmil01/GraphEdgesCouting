@@ -33,14 +33,14 @@ namespace Graphs
             } 
         }
 
-        public int[,] GenerateAsynchronously(int size)
+        public int[,] GenerateConcurrently(int size)
         {
             int[,] graphArray = new int[size, size];
-            FillAsynchronously(graphArray);
+            FillConcurrently(graphArray);
             return graphArray;
         }
 
-        private void FillAsynchronously(int[,] graphArray)
+        private void FillConcurrently(int[,] graphArray)
         {
             if (graphArray == null)
                 throw new ArgumentNullException();

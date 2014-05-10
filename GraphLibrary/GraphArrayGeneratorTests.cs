@@ -32,21 +32,21 @@ namespace Graphs
         }
 
         [Test]
-        public void GenerateAsynchronously_ReturnsTwoDimensionalArrayWithSpecifiedSize()
+        public void GenerateConcurrently_ReturnsTwoDimensionalArrayWithSpecifiedSize()
         {
             int size = 3;
             GraphArrayGenerator generator = new GraphArrayGenerator();
-            var graphArray = generator.GenerateAsynchronously(size);
+            var graphArray = generator.GenerateConcurrently(size);
             Assert.NotNull(graphArray);
             Assert.AreEqual(graphArray.Rank, 2);
         }
 
         [Test]
-        public void GenerateAsynchronously_ReturnedArrayIsFilledWithZeroOneValues()
+        public void GenerateConcurrently_ReturnedArrayIsFilledWithZeroOneValues()
         {
             int size = 1;
             GraphArrayGenerator generator = new GraphArrayGenerator();
-            var graphArray = generator.GenerateAsynchronously(size);
+            var graphArray = generator.GenerateConcurrently(size);
             Assert.GreaterOrEqual(graphArray[0, 0], 0);
             Assert.LessOrEqual(graphArray[0, 0], 1);
         }

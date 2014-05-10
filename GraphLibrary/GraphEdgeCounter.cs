@@ -24,26 +24,6 @@ namespace Graphs
             InitializeThreads();
         }
 
-        public int Count()
-        {
-            result = 0;
-
-            for (int i = 0; i < graph.Array.GetLength(0); i++)
-            {
-                result += CountEdgesInGraphArrayRow(graph.Array, i);
-            }
-            return result;
-        }
-
-        public int CountAsynchronously()
-        {
-            result = 0;
-
-            StartThreads();
-            WaitForResult();
-            return result;
-        }
-
         private void InitializeThreadArray()
         {
             int sizeOfArray = graph.Array.GetLength(0);
@@ -66,6 +46,26 @@ namespace Graphs
 
                 });
             }
+        }
+
+        public int Count()
+        {
+            result = 0;
+
+            for (int i = 0; i < graph.Array.GetLength(0); i++)
+            {
+                result += CountEdgesInGraphArrayRow(graph.Array, i);
+            }
+            return result;
+        }
+
+        public int CountConcurrently()
+        {
+            result = 0;
+
+            StartThreads();
+            WaitForResult();
+            return result;
         }
 
         private void StartThreads()

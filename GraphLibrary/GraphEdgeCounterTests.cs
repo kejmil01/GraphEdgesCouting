@@ -44,13 +44,13 @@ namespace Graphs
         }
 
         [Test]
-        public void CountsGraphEdgesAsynchronously()
+        public void CountsGraphEdgesConcurrently()
         {
             int[,] array = { { 0, 1 }, { 1, 0 } };
             Graph graph = new Graph(array);
             GraphEdgeCounter edgeCounter = new GraphEdgeCounter(graph);
 
-            int numberOfEdges = edgeCounter.CountAsynchronously();
+            int numberOfEdges = edgeCounter.CountConcurrently();
 
             Assert.AreEqual(2, numberOfEdges);
         }

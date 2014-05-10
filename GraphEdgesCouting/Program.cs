@@ -17,7 +17,7 @@ namespace GraphEdgeCounting
             numberOfVertices = int.Parse(Console.ReadLine());
 
             GraphArrayGenerator generator = new GraphArrayGenerator();
-            Graph graph = new Graph(generator.GenerateAsynchronously(numberOfVertices));
+            Graph graph = new Graph(generator.GenerateConcurrently(numberOfVertices));
             if(numberOfVertices <  16)
                 Console.WriteLine("Graph\n{0}\n", graph.ToString());
 
@@ -29,7 +29,7 @@ namespace GraphEdgeCounting
             Console.WriteLine("Number of edges: {0}\nTime(ms): {1}\n\n", numberOfEdges, watch.ElapsedMilliseconds);
 
             watch.Restart();
-            numberOfEdges = counter.CountAsynchronously();
+            numberOfEdges = counter.CountConcurrently();
             watch.Stop();
             Console.WriteLine("Multi-threaded\nNumber of edges: {0}\nTime(ms): {1}", numberOfEdges, watch.ElapsedMilliseconds);
             Console.Read();
