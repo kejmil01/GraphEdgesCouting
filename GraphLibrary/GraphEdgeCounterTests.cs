@@ -54,5 +54,16 @@ namespace Graphs
 
             Assert.AreEqual(2, numberOfEdges);
         }
+
+        [Test]
+        public void CountsGraphEdgesConcurrentlyMoreThanOnce()
+        {
+            int[,] array = { { 0, 1 }, { 1, 0 } };
+            Graph graph = new Graph(array);
+            GraphEdgeCounter edgeCounter = new GraphEdgeCounter(graph);
+
+            edgeCounter.CountConcurrently();
+            Assert.DoesNotThrow(() => edgeCounter.CountConcurrently());
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Graphs;
+using System.IO;
 
 namespace GraphEdgeCounting
 {
@@ -18,13 +19,13 @@ namespace GraphEdgeCounting
 
             GraphArrayGenerator generator = new GraphArrayGenerator();
             Graph graph = new Graph(generator.GenerateConcurrently(numberOfVertices));
-            if(numberOfVertices <  16)
+            if (numberOfVertices < 16)
                 Console.WriteLine("Graph\n{0}\n", graph.ToString());
 
             GraphEdgeCounter counter = new GraphEdgeCounter(graph);
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            int numberOfEdges = counter.Count();      
+            int numberOfEdges = counter.Count();
             watch.Stop();
             Console.WriteLine("Number of edges: {0}\nTime(ms): {1}\n\n", numberOfEdges, watch.ElapsedMilliseconds);
 

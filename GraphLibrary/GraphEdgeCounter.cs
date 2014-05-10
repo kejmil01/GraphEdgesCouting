@@ -20,8 +20,6 @@ namespace Graphs
             if (graph == null)
                 throw new ArgumentNullException();
             this.graph = graph;
-            InitializeThreadArray();
-            InitializeThreads();
         }
 
         private void InitializeThreadArray()
@@ -62,7 +60,8 @@ namespace Graphs
         public int CountConcurrently()
         {
             result = 0;
-
+            InitializeThreadArray();
+            InitializeThreads();
             StartThreads();
             WaitForResult();
             return result;
